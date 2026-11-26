@@ -296,7 +296,7 @@
   background-color: var(--surface);
   border: 1px solid var(--border);
   border-radius: 14px;
-  padding: 2rem;
+  padding: 2.25rem 2rem;
   text-align: center;
 }
 
@@ -311,11 +311,19 @@
   margin-bottom: 0.35rem;
 }
 
+.about-paragraphs {
+  max-width: 780px;
+  margin: 0 auto 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+}
+
 .about-desc {
-  max-width: 660px;
-  margin: 0 auto;
   color: var(--text-muted);
   font-size: 0.98rem;
+  line-height: 1.75;
 }
 
 .about-desc code {
@@ -323,6 +331,78 @@
   padding: 0.1rem 0.35rem;
   border-radius: 4px;
   font-size: 0.88rem;
+}
+
+.about-highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1rem;
+  text-align: left;
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+}
+
+.about-step {
+  background-color: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.15rem;
+}
+
+.about-step-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--primary);
+  background-color: #dbeafe;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  margin-bottom: 0.55rem;
+}
+
+.about-step h3 {
+  font-size: 0.98rem;
+  margin-bottom: 0.35rem;
+}
+
+.about-step p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.about-step code {
+  background-color: #e2e8f0;
+  padding: 0.08rem 0.3rem;
+  border-radius: 4px;
+  font-size: 0.82rem;
+}
+
+/* Animasi huruf muncul per karakter saat Tentang diklik */
+.reveal-text .word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.reveal-text .char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.about.is-revealed .reveal-text .char {
+  animation: charReveal 0.32s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes charReveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Section Features */
@@ -478,7 +558,13 @@
   .floating-badge-top,
   .floating-badge-bottom,
   .visual-glow-1,
-  .visual-glow-2 {
+  .visual-glow-2,
+  .about.is-revealed .reveal-text .char {
     animation: none;
+  }
+
+  .reveal-text .char {
+    opacity: 1;
+    transform: none;
   }
 }

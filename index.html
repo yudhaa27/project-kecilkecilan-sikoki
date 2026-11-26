@@ -210,12 +210,60 @@
       <div class="container">
         <div class="about-box">
           <span class="section-eyebrow">Tentang Alur Kerja</span>
-          <h2 class="section-title">Kolaborasi Tanpa Saling Menimpa Kode</h2>
-          <p class="about-desc">
-            Setiap anggota bekerja di branch masing-masing pada area file yang
-            sudah ditentukan. Dengan pemisahan komponen antara Navbar dan Home,
-            proses merge ke branch <code>main</code> tetap aman dan bersih.
-          </p>
+          <h2 class="section-title reveal-text" data-delay="0">
+            Kolaborasi Tanpa Saling Menimpa Kode
+          </h2>
+
+          <div class="about-paragraphs">
+            <p class="about-desc reveal-text" data-delay="180">
+              Projek kecil-kecilan komunitas SIKOKI ini dirancang sebagai simulasi
+              kerja tim nyata di GitHub untuk dua orang pengembang. Alih-alih
+              bekerja langsung di branch utama secara bersamaan, setiap anggota
+              memiliki tanggung jawab komponen yang terisolasi sehingga proses
+              pengembangan berjalan paralel, terstruktur, dan mudah dilacak.
+            </p>
+            <p class="about-desc reveal-text" data-delay="420">
+              PIC Navbar berfokus pada bagian navigasi atas, menu responsif, dan
+              interaksi tombol mobile melalui branch feat/navbar. Sementara itu,
+              PIC Home bertanggung jawab atas halaman utama, tampilan hero dengan
+              ilustrasi live, bagian tentang, serta penyusunan kartu fitur melalui
+              branch feat/home.
+            </p>
+            <p class="about-desc reveal-text" data-delay="680">
+              Setelah masing-masing fitur selesai dikerjakan dan diuji pada layar
+              desktop maupun mobile, perubahan dikirim melalui Pull Request menuju
+              branch main. Maintainer akan memeriksa kerapian kode, memastikan
+              tidak ada error di console browser, serta memverifikasi bebas
+              konflik sebelum melakukan merge akhir.
+            </p>
+          </div>
+
+          <div class="about-highlights">
+            <div class="about-step">
+              <span class="about-step-tag">Tahap 1</span>
+              <h3>Sinkronisasi &amp; Branching</h3>
+              <p>
+                Tarik pembaruan terbaru dari <code>main</code> lalu buat branch
+                fitur sesuai peran agar riwayat commit tetap bersih.
+              </p>
+            </div>
+            <div class="about-step">
+              <span class="about-step-tag">Tahap 2</span>
+              <h3>Pengembangan Terisolasi</h3>
+              <p>
+                Edit hanya file dan blok HTML yang menjadi area tugas masing-masing
+                guna menghindari tabrakan baris kode.
+              </p>
+            </div>
+            <div class="about-step">
+              <span class="about-step-tag">Tahap 3</span>
+              <h3>Pull Request &amp; Review</h3>
+              <p>
+                Ajukan PR dengan deskripsi jelas menggunakan template yang tersedia
+                agar proses review dan merge berjalan mulus.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -252,6 +300,76 @@
         </div>
       </div>
     </section>
+    <script>
+      // [PIC HOME] Animasi huruf muncul bertahap saat tombol/link Tentang diklik
+      (() => {
+        const aboutSection = document.getElementById("tentang");
+        if (!aboutSection) return;
+
+        const revealTargets = aboutSection.querySelectorAll(".reveal-text");
+        const prepared = [];
+
+        revealTargets.forEach((el) => {
+          const text = el.textContent.replace(/\s+/g, " ").trim();
+          const baseDelay = Number(el.dataset.delay || 0);
+          const isTitle = el.classList.contains("section-title");
+          const stepMs = isTitle ? 22 : 7;
+
+          el.textContent = "";
+          let charIndex = 0;
+
+          text.split(" ").forEach((word, wordIdx, words) => {
+            const wordSpan = document.createElement("span");
+            wordSpan.className = "word";
+
+            for (const ch of word) {
+              const charSpan = document.createElement("span");
+              charSpan.className = "char";
+              charSpan.textContent = ch;
+              charSpan.style.animationDelay = `${baseDelay + charIndex * stepMs}ms`;
+              wordSpan.appendChild(charSpan);
+              charIndex++;
+            }
+
+            el.appendChild(wordSpan);
+            if (wordIdx < words.length - 1) {
+              el.appendChild(document.createTextNode(" "));
+            }
+          });
+
+          prepared.push(el);
+        });
+
+        const triggerReveal = () => {
+          aboutSection.classList.remove("is-revealed");
+          void aboutSection.offsetWidth; // paksa reflow agar animasi bisa diputar ulang
+          aboutSection.classList.add("is-revealed");
+        };
+
+        document.querySelectorAll('a[href="#tentang"]').forEach((link) => {
+          link.addEventListener("click", () => {
+            setTimeout(triggerReveal, 120);
+          });
+        });
+
+        if (window.location.hash === "#tentang") {
+          triggerReveal();
+        } else if ("IntersectionObserver" in window) {
+          const observer = new IntersectionObserver(
+            (entries) => {
+              if (entries.some((entry) => entry.isIntersecting)) {
+                aboutSection.classList.add("is-revealed");
+                observer.disconnect();
+              }
+            },
+            { threshold: 0.2 }
+          );
+          observer.observe(aboutSection);
+        } else {
+          aboutSection.classList.add("is-revealed");
+        }
+      })();
+    </script>
   </main>
 
   <footer id="kontak" class="footer">
