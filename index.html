@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SIKOKI — Project Kecil-Kecilan</title>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/home.css" />
+</head>
+<body>
+  <!-- =========================================================
+       [PIC NAVBAR] Area pengerjaan komponen Navbar
+       Edit bagian <header> ini & styling di css/navbar.css
+       ========================================================= -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="#home" class="navbar-brand">SIKOKI</a>
+
+      <button
+        class="navbar-toggle"
+        id="navbar-toggle"
+        aria-label="Toggle navigasi"
+        aria-expanded="false"
+        aria-controls="navbar-menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="navbar-menu" id="navbar-menu" aria-label="Navigasi utama">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#tentang" class="nav-link">Tentang</a>
+        <a href="#fitur" class="nav-link">Fitur</a>
+        <a href="#kontak" class="nav-link nav-cta">Kontak</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- =========================================================
+       [PIC HOME] Area pengerjaan tampilan Home
+       Edit bagian <main> ini & styling di css/home.css
+       ========================================================= -->
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-inner">
+        <span class="hero-badge">Komunitas SIKOKI</span>
+        <h1 class="hero-title">Bangun Projek Bersama dengan Rapi di GitHub</h1>
+        <p class="hero-subtitle">
+          Starter halaman Home sederhana untuk latihan kolaborasi tim 2 orang
+          menggunakan Git branching, Pull Request, dan Code Review.
+        </p>
+        <div class="hero-actions">
+          <a href="#fitur" class="btn btn-primary">Lihat Fitur</a>
+          <a href="#tentang" class="btn btn-secondary">Pelajari Alur</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="fitur" class="features">
+      <div class="container">
+        <h2 class="section-title">Pembagian Tugas Tim</h2>
+        <div class="features-grid">
+          <article class="feature-card">
+            <h3>1. Komponen Navbar</h3>
+            <p>
+              Dikerjakan di branch <code>feat/navbar</code> dengan fokus pada
+              navigasi responsif dan menu mobile.
+            </p>
+          </article>
+          <article class="feature-card">
+            <h3>2. Tampilan Home</h3>
+            <p>
+              Dikerjakan di branch <code>feat/home</code> dengan fokus pada
+              hero section, konten utama, dan tata letak.
+            </p>
+          </article>
+          <article class="feature-card">
+            <h3>3. Review &amp; Merge</h3>
+            <p>
+              Maintainer memeriksa Pull Request dari tiap branch sebelum
+              digabungkan ke <code>main</code>.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="kontak" class="footer">
+    <div class="container">
+      <p>&copy; 2026 SIKOKI — Project Kecil-Kecilan</p>
+    </div>
+  </footer>
+
+  <script src="js/navbar.js"></script>
+</body>
+</html>
