@@ -44,40 +44,206 @@
        ========================================================= -->
   <main id="home">
     <section class="hero">
-      <div class="container hero-inner">
-        <span class="hero-badge">Komunitas SIKOKI</span>
-        <h1 class="hero-title">Bangun Projek Bersama dengan Rapi di GitHub</h1>
-        <p class="hero-subtitle">
-          Starter halaman Home sederhana untuk latihan kolaborasi tim 2 orang
-          menggunakan Git branching, Pull Request, dan Code Review.
-        </p>
-        <div class="hero-actions">
-          <a href="#fitur" class="btn btn-primary">Lihat Fitur</a>
-          <a href="#tentang" class="btn btn-secondary">Pelajari Alur</a>
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <span class="hero-badge">
+            <span class="live-dot" aria-hidden="true"></span>
+            Komunitas SIKOKI &bull; Live Kolaborasi
+          </span>
+          <h1 class="hero-title">Bangun Projek Bersama dengan Rapi di GitHub</h1>
+          <p class="hero-subtitle">
+            Starter halaman Home sederhana untuk latihan kolaborasi tim 2 orang
+            menggunakan Git branching, Pull Request, dan Code Review.
+          </p>
+          <div class="hero-actions">
+            <a href="#fitur" class="btn btn-primary">Lihat Fitur</a>
+            <a href="#tentang" class="btn btn-secondary">Pelajari Alur</a>
+          </div>
+        </div>
+
+        <!-- Gambar Live / Animasi Bergerak (SVG + CSS Keyframes) -->
+        <div class="hero-visual" aria-label="Ilustrasi animasi alur kolaborasi Git SIKOKI">
+          <div class="visual-glow visual-glow-1" aria-hidden="true"></div>
+          <div class="visual-glow visual-glow-2" aria-hidden="true"></div>
+
+          <div class="live-board">
+            <div class="live-board-header">
+              <div class="window-dots" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </div>
+              <span class="live-board-title">sikoki-repo &bull; live branch graph</span>
+              <span class="live-pill">LIVE</span>
+            </div>
+
+            <svg
+              class="live-svg"
+              viewBox="0 0 420 240"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              role="img"
+              aria-label="Animasi cabang Git feat/navbar dan feat/home menuju main"
+            >
+              <!-- Grid background -->
+              <defs>
+                <pattern id="sikoki-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+                  <path d="M 24 0 L 0 0 0 24" stroke="#e2e8f0" stroke-width="0.7" />
+                </pattern>
+                <linearGradient id="branch-main" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#2563eb" />
+                  <stop offset="100%" stop-color="#0ea5e9" />
+                </linearGradient>
+                <linearGradient id="branch-home" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#10b981" />
+                  <stop offset="100%" stop-color="#2563eb" />
+                </linearGradient>
+              </defs>
+
+              <rect width="420" height="240" rx="12" fill="#f8fafc" />
+              <rect width="420" height="240" rx="12" fill="url(#sikoki-grid)" opacity="0.65" />
+
+              <!-- Main branch line -->
+              <path
+                d="M 42 120 L 378 120"
+                stroke="url(#branch-main)"
+                stroke-width="4"
+                stroke-linecap="round"
+              />
+
+              <!-- Branch feat/navbar (atas) -->
+              <path
+                class="svg-flow-path"
+                d="M 96 120 C 122 120, 126 58, 162 58 L 266 58 C 302 58, 306 120, 332 120"
+                stroke="#6366f1"
+                stroke-width="3.5"
+                stroke-linecap="round"
+                stroke-dasharray="8 6"
+              />
+
+              <!-- Branch feat/home (bawah) -->
+              <path
+                class="svg-flow-path svg-flow-reverse"
+                d="M 96 120 C 122 120, 126 182, 162 182 L 266 182 C 302 182, 306 120, 332 120"
+                stroke="url(#branch-home)"
+                stroke-width="3.5"
+                stroke-linecap="round"
+                stroke-dasharray="8 6"
+              />
+
+              <!-- Animated moving commit packet on feat/navbar -->
+              <circle r="5" fill="#6366f1">
+                <animateMotion
+                  dur="3.6s"
+                  repeatCount="indefinite"
+                  path="M 96 120 C 122 120, 126 58, 162 58 L 266 58 C 302 58, 306 120, 332 120"
+                />
+              </circle>
+
+              <!-- Animated moving commit packet on feat/home -->
+              <circle r="5.5" fill="#10b981">
+                <animateMotion
+                  dur="3.2s"
+                  repeatCount="indefinite"
+                  path="M 96 120 C 122 120, 126 182, 162 182 L 266 182 C 302 182, 306 120, 332 120"
+                />
+              </circle>
+
+              <!-- Commit nodes -->
+              <circle cx="42" cy="120" r="8" fill="#ffffff" stroke="#2563eb" stroke-width="3.5" />
+              <circle cx="96" cy="120" r="8" fill="#ffffff" stroke="#2563eb" stroke-width="3.5" />
+              <circle cx="214" cy="58" r="8" fill="#ffffff" stroke="#6366f1" stroke-width="3.5" />
+              <circle cx="214" cy="182" r="8" fill="#ffffff" stroke="#10b981" stroke-width="3.5" />
+
+              <!-- Merge pulse ring -->
+              <circle class="svg-pulse-ring" cx="332" cy="120" r="14" stroke="#2563eb" stroke-width="2" />
+              <circle cx="332" cy="120" r="9" fill="#2563eb" stroke="#ffffff" stroke-width="3" />
+              <circle cx="378" cy="120" r="8" fill="#0ea5e9" stroke="#ffffff" stroke-width="3" />
+
+              <!-- Labels -->
+              <rect x="166" y="24" width="96" height="22" rx="6" fill="#eef2ff" stroke="#c7d2fe" />
+              <text x="214" y="39" text-anchor="middle" font-size="11" font-weight="600" fill="#4338ca">
+                feat/navbar
+              </text>
+
+              <rect x="166" y="194" width="96" height="22" rx="6" fill="#ecfdf5" stroke="#a7f3d0" />
+              <text x="214" y="209" text-anchor="middle" font-size="11" font-weight="600" fill="#047857">
+                feat/home
+              </text>
+
+              <rect x="304" y="84" width="56" height="20" rx="6" fill="#dbeafe" />
+              <text x="332" y="98" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1d4ed8">
+                main
+              </text>
+            </svg>
+
+            <div class="live-stats">
+              <div class="live-stat-chip">
+                <span class="chip-dot chip-dot-blue"></span>
+                <span>2 Branch Aktif</span>
+              </div>
+              <div class="live-stat-chip">
+                <span class="chip-dot chip-dot-green"></span>
+                <span>Siap Pull Request</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="floating-badge floating-badge-top">
+            <span class="floating-icon" aria-hidden="true">&#9889;</span>
+            <div>
+              <strong>Zero Conflict</strong>
+              <small>Area file terpisah</small>
+            </div>
+          </div>
+
+          <div class="floating-badge floating-badge-bottom">
+            <span class="floating-icon" aria-hidden="true">&#10003;</span>
+            <div>
+              <strong>PR Verified</strong>
+              <small>Desktop &amp; Mobile</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tentang" class="about">
+      <div class="container">
+        <div class="about-box">
+          <span class="section-eyebrow">Tentang Alur Kerja</span>
+          <h2 class="section-title">Kolaborasi Tanpa Saling Menimpa Kode</h2>
+          <p class="about-desc">
+            Setiap anggota bekerja di branch masing-masing pada area file yang
+            sudah ditentukan. Dengan pemisahan komponen antara Navbar dan Home,
+            proses merge ke branch <code>main</code> tetap aman dan bersih.
+          </p>
         </div>
       </div>
     </section>
 
     <section id="fitur" class="features">
       <div class="container">
+        <span class="section-eyebrow">Struktur Tugas</span>
         <h2 class="section-title">Pembagian Tugas Tim</h2>
         <div class="features-grid">
           <article class="feature-card">
-            <h3>1. Komponen Navbar</h3>
+            <span class="feature-num">01</span>
+            <h3>Komponen Navbar</h3>
             <p>
               Dikerjakan di branch <code>feat/navbar</code> dengan fokus pada
               navigasi responsif dan menu mobile.
             </p>
           </article>
           <article class="feature-card">
-            <h3>2. Tampilan Home</h3>
+            <span class="feature-num">02</span>
+            <h3>Tampilan Home</h3>
             <p>
               Dikerjakan di branch <code>feat/home</code> dengan fokus pada
-              hero section, konten utama, dan tata letak.
+              hero section, visual interaktif, dan tata letak konten utama.
             </p>
           </article>
           <article class="feature-card">
-            <h3>3. Review &amp; Merge</h3>
+            <span class="feature-num">03</span>
+            <h3>Review &amp; Merge</h3>
             <p>
               Maintainer memeriksa Pull Request dari tiap branch sebelum
               digabungkan ke <code>main</code>.
